@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:title" content="Holiday Countdowns">
+    <meta property="og:description" content="Countdown to your favorite holidays!">
+    <meta property="og:image" content="https://cdn.glitch.global/02844831-9d28-4c7a-9eda-9cc54c371801/christmas-1911637_1280%20(1).jpg?v=1703421209703">
+    <meta property="og:url" content="https://holidaycountdowns.xyz">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Countdown to Special Events">
+    <title>Holiday Countdowns!</title>
+    <link rel="icon" href="https://cdn.glitch.global/02844831-9d28-4c7a-9eda-9cc54c371801/christmas-1911637_1280%20(1).jpg?v=1703421209703"
+          type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Holiday Countdown</h1>
+        <p id="countdownTypeText">Current Countdown To: Holiday</p>
+    </header>
+    <main>
+        <!-- Warning message about countdown accuracy -->
+        <div class="warning-message">
+            <p><strong>Important Notice:</strong> Our countdowns will be automatically adjusted to support Daylight Savings Time, ensuring accuracy throughout the year. Thank you for your understanding.</p>
+        </div>
+        <!-- Countdown section -->
+        <b>
+            <section class="countdown" aria-live="polite">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days" aria-labelledby="days-label"></span>
+                    <span class="countdown-label visually-hidden" id="days-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours" aria-labelledby="hours-label"></span>
+                    <span class="countdown-label visually-hidden" id="hours-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes" aria-labelledby="minutes-label"></span>
+                    <span class="countdown-label visually-hidden" id="minutes-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds" aria-labelledby="seconds-label"></span>
+                    <span class="countdown-label visually-hidden" id="seconds-label">Seconds</span>
+                </div>
+            </section>
+        </b>
+        <!-- Music toggle buttons -->
+        <button id="playMusic">Play Music</button>
+        <button id="pauseMusic">Pause Music</button>
+    </main>
+    <!-- Social media icons -->
+    <footer>
+        <div class="footer-links">
+            <a href="/terms-of-service">Terms of Service</a>
+            <a href="/support">Support</a>
+            <a href="/docs">Documentation</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <p>&copy; 2024 Holiday Countdowns. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/your-facebook-page" target="_blank"><img
+                    src="https://cdn.glitch.global/02844831-9d28-4c7a-9eda-9cc54c371801/317752_facebook_social%20media_social_icon.svg?v=1701522225603"
+                    alt="Facebook"></a>
+            <a href="https://twitter.com/holiday_counts" target="_blank"><img
+                    src="https://cdn.glitch.global/02844831-9d28-4c7a-9eda-9cc54c371801/317749_social%20media_tweet_twitter_social_icon.svg?v=1701522232413"
+                    alt="Twitter"></a>
+            <a href="https://www.instagram.com/your-instagram-profile" target="_blank"><img
+                    src="https://cdn.glitch.global/02844831-9d28-4c7a-9eda-9cc54c371801/3225191_app_instagram_logo_media_popular_icon.svg?v=1701522239711"
+                    alt="Instagram"></a>
+        </div>
+    </footer>
+</div>
+
+<!-- Background music player -->
+<audio id="backgroundMusic" controls hidden>
+    <source src="background-music.mp3" type="audio/mp3">
+    Your browser does not support the audio tag.
+</audio>
+
+<script>
+    var xhr = new XMLHttpRequest();
+    var url = "https://example.com"; // Replace "https://example.com" with the URL you want to make a request to
+
+    xhr.open("GET", rl, true);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText); // Print the response to the console
+            // You can perform additiounal actions with the response here
+        }
+    };
+
+    xhr.send();
+</script>
+
+<script defer src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:title" content="Holiday Countdowns">
+    <meta property="og:description" content="Countdown to your favorite holidays!">
+    <meta property="og:image" content="favicon.ico">
+    <meta property="og:url" content="https://holidaycountdowns.xyz">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Countdown to Special Events">
+    <title>Holiday Countdowns!</title>
+    <link rel="icon" href="favicon.ico"
+          type="image/x-icon">
+    <link rel="stylesheet" href="style.css">    
+    
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Holiday Countdown</h1>
+        <p id="countdownTypeText">Current Countdown To: Holiday</p>
+    </header>
+    <main>
+        <!-- Warning message about countdown accuracy -->
+        <div class="warning-message">
+            <p><strong>Important Notice:</strong> Our countdowns will be automatically adjusted to support Daylight Savings Time, ensuring accuracy throughout the year. Thank you for your understanding.</p>
+        </div>
+        <!-- Countdown section -->
+        <b>
+            <section class="countdown" aria-live="polite">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days" aria-labelledby="days-label"></span>
+                    <span class="countdown-label visually-hidden" id="days-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours" aria-labelledby="hours-label"></span>
+                    <span class="countdown-label visually-hidden" id="hours-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes" aria-labelledby="minutes-label"></span>
+                    <span class="countdown-label visually-hidden" id="minutes-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds" aria-labelledby="seconds-label"></span>
+                    <span class="countdown-label visually-hidden" id="seconds-label">Seconds</span>
+                </div>
+            </section>
+        </b>
+        <!-- Buttons for predefined holidays -->
+        <div class="buttons-container">
+            <button onclick="setCountdown('newyear')">New Year</button>
+            <button onclick="setCountdown('valentines')">Valentine's Day</button>
+            <button onclick="setCountdown('easter')">Easter</button>
+            <button onclick="setCountdown('mothersday')">Mother's Day</button>
+            <button onclick="setCountdown('fathersday')">Father's Day</button>
+            <button onclick="setCountdown('spring')">Spring</button>
+            <button onclick="setCountdown('summer')">Summer</button>
+            <button onclick="setCountdown('autumn')">Autumn</button>
+            <button onclick="setCountdown('halloween')">Halloween</button>
+            <button onclick="setCountdown('thanksgiving')">Thanksgiving</button>
+            <button onclick="setCountdown('christmas')">Christmas</button>
+            <button onclick="setCountdown('winter')">Winter</button>
+            <button onclick="setCountdown('santatracker')">Christmas Eve</button>
+            <button onclick="setCountdown('independence')">Independence Day</button>
+        </div>
+        <!-- Form for custom date input -->
+        <form id="customDateForm">
+            <label for="customDate">Custom Date:</label>
+            <input type="date" id="customDate" name="customDate">
+            <button type="button" onclick="setCustomCountdown()">Set Custom Countdown</button>
+        </form>
+        <!-- Music toggle buttons -->
+        <button id="playMusic">Play Music</button>
+        <button id="pauseMusic">Pause Music</button>
+    </main>
+    <!-- Social media icons -->
+    <footer>
+        <div class="footer-links">
+            <a href="/terms-of-service">Terms of Service</a>
+            <a href="/support">Support</a>
+            <a href="/docs">Documentation</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <p>&copy; 2024 Holiday Countdowns. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/your-facebook-page" target="_blank"><img
+                    src="317752_facebook_social media_social_icon (1).svg"
+                    alt="Facebook"></a>
+            <a href="https://twitter.com/holiday_counts" target="_blank"><img
+                    src="317749_social media_tweet_twitter_social_icon (1).svg"
+                    alt="Twitter"></a>
+            <a href="https://www.instagram.com/your-instagram-profile" target="_blank"><img
+                    src="3225191_app_instagram_logo_media_popular_icon (1).svg"
+                    alt="Instagram"></a>
+        </div>
+    </footer>
+</div>
+
+<!-- Background music player -->
+<audio id="backgroundMusic" controls hidden>
+    <source src="background-music.mp3" type="audio/mp3">
+    Your browser does not support the audio tag.
+</audio>
+
+<script>
+    var xhr = new XMLHttpRequest();
+    var url = "https://uptime.betterstack.com/api/v1/heartbeat/KfTJWhUUJjJ7SVYyWSdYGZgK"; // Replace "https://example.com" with the URL you want to make a request to
+
+    xhr.open("GET", rl, true);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText); // Print the response to the console
+            // You can perform additiounal actions with the response here
+        }
+    };
+
+    xhr.send();
+</script>
+
+<script defer src="script.js"></script>
+</body>
+</html>
