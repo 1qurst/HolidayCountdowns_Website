@@ -5,7 +5,7 @@ ErrorDocument 400 /400.html
 
 
 # DirectoryIndex configuration
-DirectoryIndex docs.html index.html terms.html privacy.html jailbreak.html support.html
+DirectoryIndex docs.html index.html terms.html privacy.html jailbreak.html support.html events.html 
 
 # Redirect to www
 RewriteCond %{REQUEST_URI} !^/(robots\.txt|favicon\.ico|sitemap\.xml)$
