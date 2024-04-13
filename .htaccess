@@ -3,17 +3,18 @@ ErrorDocument 403 /403.html
 ErrorDocument 404 /404.html
 ErrorDocument 400 /400.html
 
+# Redirect to www
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # DirectoryIndex configuration
 DirectoryIndex docs.html index.html terms.html privacy.html jailbreak.html support.html events.html 
 
-# Redirect to www
-RewriteCond %{REQUEST_URI} !^/(robots\.txt|favicon\.ico|sitemap\.xml)$
-RewriteCond %{HTTP_HOST} !^www\.askapache\.com$ [NC]
-RewriteRule ^(.*)$ https://www.askapache.com/$1 [R=301,L]
+# Redirect to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-# Dynamically redirect based on URL
-RewriteCond %{REQUEST_URI} !^/robots\.txt$ [NC]
-RewriteCond %{HTTP_HOST} !^www\.[a-z-]+\.[a-z]{2,6} [NC]
-RewriteCond %{HTTP_HOST} ([a-z-]+\.[a-z]{2,6})$ [NC]
-RewriteRule ^/(.*)$ http://%1/$1 [R=301,L]
+# Redirect based on URL
+RewriteCond %{HTTP_HOST} !^www\. [NC,OR]
+RewriteCond %{REQUEST_URI} !^/(robots\.txt|favicon\.ico|sitemap\.xml)$ [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
