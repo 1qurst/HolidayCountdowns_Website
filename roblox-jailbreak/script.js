@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
           countdownTypeText = "Valentine's Day";
           break;
      case 'jailbreak':
-        holidayDate = convertUTCtoLocal(new Date("Apr 20, 2024 13:00:00 UTC"));
+        holidayDate = convertUTCtoLocal(new Date("Apr 20, 2024 18:00:00 GMT"));
         countdownTypeText = "Jailbreak Live Event";
         break;
       case 'custom':
@@ -133,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("hours").innerHTML = 0;
         document.getElementById("minutes").innerHTML = 0;
         document.getElementById("seconds").innerHTML = 0;
+        document.getElementById("countdownTypeText").innerHTML = "JAILBREAK LIVE EVENT STARTED";
       }
     }, 1000);
   }

@@ -108,6 +108,11 @@ document.addEventListener("DOMContentLoaded", function () {
     startCountdown(holidayDate);
   }
   
+  function goToJailbreakEvent() {
+    window.location.href = 'https://holidaycountdowns.xyz/roblox-jailbreak'; // Adjust the URL as needed
+}
+
+
   function startCountdown(countDownDate) {
     countdownInterval = setInterval(function () {
       const now = new Date().getTime(); // Get the current local time
@@ -231,4 +236,3 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(showCookieConsent, 5000);
     }
   };
-  
