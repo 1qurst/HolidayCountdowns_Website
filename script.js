@@ -88,17 +88,17 @@ document.addEventListener("DOMContentLoaded", function () {
           holidayDate = convertUTCtoLocal(new Date("Feb 14, 2025 00:00:00 UTC"));
           countdownTypeText = "Valentine's Day";
           break;
-      case 'custom':
-          if (customDate) {
-              holidayDate = convertUTCtoLocal(new Date(customDate + 'T00:00:00Z'));
-          } else {
-              // If no custom date provided, default to today
-              holidayDate = convertUTCtoLocal(new Date());
-          }
-          countdownTypeText = 'Custom';
-          break;
-      default:
-          return;
+          case 'custom':
+            if (customDate) {
+                holidayDate = convertUTCtoLocal(new Date(customDate + 'T00:00:00Z'));
+            } else {
+                // If no custom date provided, default to today
+                holidayDate = convertUTCtoLocal(new Date());
+            }
+            countdownTypeText = 'Custom';
+            break;
+        default:
+            return;
     }
   
     // Update the countdown type text in the HTML
@@ -137,6 +137,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 1000);
   }
+
+  function setCustomCountdown() {
+    const customDate = document.getElementById("customDate").value;
+  
+    if (customDate) {
+      setCountdown('custom', customDate);
+    } else {
+      alert("Please enter a valid custom date.");
+    }
+  }
   
   // Get references to the play and pause buttons
   const playButton = document.getElementById('playMusic');
@@ -158,81 +168,9 @@ document.addEventListener("DOMContentLoaded", function () {
   playButton.addEventListener('click', playMusic);
   pauseButton.addEventListener('click', pauseMusic);
   
-  // Check if a cookie called 'user_cookie_consent' is set
-  const isCookieAccepted = getCookie("user_cookie_consent");
-  if (isCookieAccepted) {
-    // If the cookie is set, hide the cookie consent banner
-    document.getElementById("cookie-consent").classList.add("hidden");
-  } else {
-    // If the cookie is not set, show the cookie consent banner
-    document.getElementById("cookie-consent").classList.remove("hidden");
-  }
-  
-  // Function to get a cookie value
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  }
-  
-  // Function to set a cookie value
-  function setCookie(name, value, days) {
-    const expires = `expires=${new Date(Date.now() + days * 86400000).toUTCString()};`;
-    document.cookie = `${name}=${value};${expires};path=/`;
-  }
-  
   // Function to display an error message
   function displayError(errorMessage) {
     alert(errorMessage); // You can customize this based on your UI design
   }
   
-  // Add a click event listener to the accept button
-  document.getElementById("cookie-accept-button").
-  addEventListener("click", function () {
-    // Set the cookie
-    setCookie("user_cookie_consent", "true", 365);
-    // Hide the cookie consent banner
-    document.getElementById("cookie-consent").classList.add("hidden");
-  });
   
-  // Add a click event listener to the decline button
-  document.getElementById("cookie-decline-button").addEventListener("click", function () {
-    // Set the cookie
-    setCookie("user_cookie_consent", "false", 365);
-    // Redirect the user to a page that explains the consequence of declining cookies
-    window.location.href = "/cookie-policy.html";
-  });
-  
-  // Set the cookie banner to be hidden by default
-  document.getElementById('cookie-consent').classList.add('hidden');
-  
-  // Function to show the cookie banner
-  function showCookieConsent() {
-    // Remove the hidden class from the cookie banner
-    document.getElementById('cookie-consent').classList.remove('hidden');
-    // Add the visible class to the cookie banner
-    document.getElementById('cookie-consent').classList.add('visible');
-  }
-  
-  // Function to hide the cookie banner
-  function hideCookieConsent() {
-    // Remove the visible class from the cookie banner
-    document.getElementById('cookie-consent').classList.remove('visible');
-    // Add the hidden class to the cookie banner
-    document.getElementById('cookie-consent').classList.add('hidden');
-    // Set a cookie to remember the user's choice
-    document.cookie = 'user_cookie_consent=accepted; expires=Thu, 01 Jan 2031 00:00:00 UTC; path=/';
-  }
-  
-  // Wait for the page to load
-  window.onload = function() {
-    // Check if the user has previously accepted the cookies
-    var cookiesAccepted = getCookie('user_cookie_consent');
-    // If the user has previously accepted the cookies, hide the cookie banner
-    if (cookiesAccepted) {
-      hideCookieConsent();
-    } else {
-      // Otherwise, wait for 5 seconds before showing the cookie banner
-      setTimeout(showCookieConsent, 5000);
-    }
-  };
