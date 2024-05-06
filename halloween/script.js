@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const defaultCountdownType = urlParams.get('countdown');
   
     // Set the default countdown type based on the query parameter
-    setCountdown(defaultCountdownType || 'summer');
+    setCountdown(defaultCountdownType || 'halloween');
   
     // Music toggle button
     const backgroundMusic = document.getElementById('backgroundMusic');
@@ -37,11 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
   
     switch (holiday) {
       case 'spring':
-          holidayDate = convertUTCtoLocal(new Date("Mar 20, 2025 00:00:00 UTC"));
+          holidayDate = convertUTCtoLocal(new Date("Mar 20, 2024 00:00:00 UTC"));
           countdownTypeText = 'Spring';
           break;
       case 'easter':
-          holidayDate = convertUTCtoLocal(new Date("Mar 31, 2025 00:00:00 UTC"));
+          holidayDate = convertUTCtoLocal(new Date("Mar 31, 2024 00:00:00 UTC"));
           countdownTypeText = 'Easter';
           break;
       case 'mothersday':
@@ -72,10 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
           holidayDate = convertUTCtoLocal(new Date("Nov 28, 2024 00:00:00 UTC"));
           countdownTypeText = 'Thanksgiving';
           break;
-      case 'winter':
-          holidayDate = convertUTCtoLocal(new Date("Dec 1, 2024 00:00:00 UTC"));
-          countdownTypeText = 'Winter';
-          break;
       case 'christmas':
           holidayDate = convertUTCtoLocal(new Date("Dec 25, 2024 00:00:00 GMT"));
           countdownTypeText = 'Christmas';
@@ -92,17 +88,21 @@ document.addEventListener("DOMContentLoaded", function () {
           holidayDate = convertUTCtoLocal(new Date("Feb 14, 2025 00:00:00 UTC"));
           countdownTypeText = "Valentine's Day";
           break;
-          case 'custom':
-            if (customDate) {
-                holidayDate = convertUTCtoLocal(new Date(customDate + 'T00:00:00Z'));
-            } else {
-                // If no custom date provided, default to today
-                holidayDate = convertUTCtoLocal(new Date());
-            }
-            countdownTypeText = 'Custom';
-            break;
-        default:
-            return;
+     case 'jailbreak':
+        holidayDate = convertUTCtoLocal(new Date("Apr 20, 2024 18:00:00 GMT"));
+        countdownTypeText = "Jailbreak Live Event";
+        break;
+      case 'custom':
+          if (customDate) {
+              holidayDate = convertUTCtoLocal(new Date(customDate + 'T00:00:00Z'));
+          } else {
+              // If no custom date provided, default to today
+              holidayDate = convertUTCtoLocal(new Date());
+          }
+          countdownTypeText = 'Custom';
+          break;
+      default:
+          return;
     }
   
     // Update the countdown type text in the HTML
@@ -112,11 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
     startCountdown(holidayDate);
   }
   
-  function goToJailbreakEvent() {
-    window.location.href = 'https://holidaycountdowns.xyz/roblox-jailbreak'; // Adjust the URL as needed
-}
-
-
   function startCountdown(countDownDate) {
     countdownInterval = setInterval(function () {
       const now = new Date().getTime(); // Get the current local time
@@ -138,18 +133,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("hours").innerHTML = 0;
         document.getElementById("minutes").innerHTML = 0;
         document.getElementById("seconds").innerHTML = 0;
+        document.getElementById("countdownTypeText").innerHTML = "Happy Halloween!";
       }
     }, 1000);
-  }
-
-  function setCustomCountdown() {
-    const customDate = document.getElementById("customDate").value;
-  
-    if (customDate) {
-      setCountdown('custom', customDate);
-    } else {
-      alert("Please enter a valid custom date.");
-    }
   }
   
   // Get references to the play and pause buttons
@@ -172,9 +158,31 @@ document.addEventListener("DOMContentLoaded", function () {
   playButton.addEventListener('click', playMusic);
   pauseButton.addEventListener('click', pauseMusic);
   
+  // Check if a cookie called 'user_cookie_consent' is set
+  const isCookieAccepted = getCookie("user_cookie_consent");
+  if (isCookieAccepted) {
+    // If the cookie is set, hide the cookie consent banner
+    document.getElementById("cookie-consent").classList.add("hidden");
+  } else {
+    // If the cookie is not set, show the cookie consent banner
+    document.getElementById("cookie-consent").classList.remove("hidden");
+  }
+  
+  // Function to get a cookie value
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+  
+  // Function to set a cookie value
+  function setCookie(name, value, days) {
+    const expires = `expires=${new Date(Date.now() + days * 86400000).toUTCString()};`;
+    document.cookie = `${name}=${value};${expires};path=/`;
+  }
+  
   // Function to display an error message
   function displayError(errorMessage) {
     alert(errorMessage); // You can customize this based on your UI design
   }
-  
   
